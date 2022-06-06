@@ -1,0 +1,23 @@
+/* 2941 */
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+      Scanner sc = new Scanner(System.in);
+      
+      // 알파벳 문자열 입력받기
+      String s = sc.nextLine();
+      // 크로아티아 변환 알파벳 문자열 배열 생성
+      String[] S = {"c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="};
+      
+      for(int i = 0; i < S.length; i++) {
+      // 입력받은 알파벳 문자열이 S 배열의 문자열을 포함한다면, "$" 로 대체
+        if(s.contains(S[i])) {
+          s = s.replace(S[i], "$");
+        }
+      }
+      System.out.println(s.length());
+      sc.close();
+    }
+}
