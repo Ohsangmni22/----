@@ -1,0 +1,47 @@
+/* 1316 */
+
+import java.util.Scanner;
+
+public class Main {
+  // Scanner 전역 객체 생성
+  static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws Exception {
+    
+      // 테스트케이스 개수 입력받기
+      int T = sc.nextInt();
+      int cnt = 0;
+      // 테스트케이스 개수만큼 문자열 입력받기
+      for(int i = 0; i < T; i++) {
+      // 그룹 단어인 경우 --> 카운팅
+        if(chck() == true) {
+          cnt++;
+        }
+      }
+      System.out.println(cnt);
+      sc.close();
+    }
+
+     // 그룹단어 체크 함수 구현
+  public static boolean chck() {
+    boolean[] chck = new boolean[26];
+    String S = sc.next();
+    int pre = 0;
+
+    for(int i=0; i<S.length(); i++) {
+      // 연속된 단어가 아닐 경우
+      if(pre != S.charAt(i)) {
+      // 중복된 단어가 아닐 경우 --> true로 표시
+        if(chck[S.charAt(i) - 'a'] == false) {
+          chck[S.charAt(i) - 'a'] = true;
+          pre = S.charAt(i);
+        }
+          
+      // 단어가 중복되었을 경우 --> 함수 종료
+        else {
+          return false;
+        }
+      }
+    }
+       return true; 
+  }
+}
